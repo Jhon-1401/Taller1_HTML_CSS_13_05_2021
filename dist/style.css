@@ -1,0 +1,131 @@
+/* font-family: 'Play', sans-serif; */
+/* 700 */
+/* 400 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+
+    
+}
+
+:root{
+    --fuente: 'Play', sans-serif;
+    --fuente_normal: 400;
+    --fuente_negrita: 700;
+    --relleno_fondo:#ccc;
+    --relleno_fondo2:rgb(150, 150, 150);
+    --relleno_body : rgb(253, 253, 253);
+    --borde_maquetacion: 2px solid #000;
+    --borde_maquetacion2: 2px solid transparent;
+}
+body{
+    text-align: center;
+    background: var(--relleno_body);
+    border: var(--borde_maquetacion2);
+}
+header{
+    font-family: var(--fuente);
+    font-weight: var(--fuente_negrita);
+    border: var(--borde_maquetacion);
+    text-align: center;
+    padding-bottom: 5px;
+    background: var(--relleno_fondo);
+}
+
+header nav{
+    font-family: var(--fuente);
+    font-weight: var(--fuente_normal);
+    border: var(--borde_maquetacion);
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: var(--relleno_fondo2);
+}
+section{
+    display: inline-block;
+    margin-top: 10px;
+    vertical-align: top;
+}
+section:nth-of-type(1){
+    width: 44.2%; 
+    height: 488px;
+    border: 2px solid rgb(14, 14, 14);
+ 
+}
+section:nth-child(1),nav:nth-last-child(2){
+    border: solid 2px;
+    background: darkgrey;
+    margin: 15px;
+    height: 230px;
+}
+section:nth-last-child(1),aside:nth-last-child(1){
+    border: solid 2px;
+    background: rgb(124, 123, 123);
+    margin: 30px;
+    height: 150px;
+    margin-bottom: 40px;
+}
+
+section:nth-of-type(2){
+    width: 53.5%;
+    border: 2px solid;
+    height: 488px;
+
+
+
+}
+article{
+    border: solid 2px;
+    margin: 10px;
+    height: 35%;
+}
+.header2{
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+.div1{
+    margin-top: 10px;
+    margin-left: 2%;
+    width: 72.5%;
+    border: solid 2px;
+    display: inline-block;
+    background: darkgrey;
+
+}
+.div2{
+    border: solid 2px;
+    margin: 15px;
+    background: darkgrey;
+
+}
+
+p{
+    border: solid 2px;
+    margin: 15px;
+    background: darkgrey;
+
+}
+
+.ansidesec2{
+    margin: 10px;
+    margin-right: 2%;
+    border: solid 2px;
+    display: inline-block;
+    width: 18.5%;
+    background: darkgrey;
+
+}
+
+footer{
+    margin: 10px;
+    border: solid 2px;
+    height: 40px;
+    background: darkgrey;
+
+}
