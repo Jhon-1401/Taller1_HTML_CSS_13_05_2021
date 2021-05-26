@@ -7,27 +7,43 @@ html(lang="sp")
         link(rel="stylesheet", href="style.css")
         link(rel="shortcut icon", href="img/logo.png", type="image/png")
         link(rel="preconnect" href="https://fonts.gstatic.com")
-        link(href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet")
+        link(href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet")
         title Taller 1 Maquetacion Web PUG
-    body body 
-        header header 
-            nav Nav
-        section section 1 
-            nav nav
-            aside aside
-           
-        section section 2 
-            header(class="header2") header
-            article article 1
-                header(class="header2") header 
-                div(class="div1") div 
-                aside(Class="ansidesec2") aside 
-                p p 
-            article article 2
-                header(class="header2") header 
-                div(class="div2") div 
-                p p 
-            footer footer 
+    body
+        -let data =[{article: {titulo: "Lo mas reciente",header: "1",div: "2",aside: "3",p: "4" },article2: {titulo: "Novedades",header: "awd",div: "4",p: "6",footer: "7" },titulo: "Ultimas noticias"},{article: {titulo: "Lo mas reciente",header: "1",div: "2",aside: "3",p: "4" },article2: {titulo: "Novedades",header: "awd",div: "4",p: "6",footer: "7" },titulo: "Ultimas noticias"}];
+        script.
+            console.log(!{JSON.stringify(data)});
+        
+        header
+            nav 
+                ul 
+                    li Menu 1
+                    li Menu 2
+                    li Menu 3
+                    li Menu 4
+        section
+            nav 
+                ul 
+                    li sub Menu 1
+                    li sub Menu 2
+                    li sub Menu 3
+                    li sub Menu 4
+            aside
+                img(src="img/imagen1.jpg", alt="")
+        div(class="Caja")
+            mixin sesiones({...arg})
+                each valor, i in arg
+                    section(class="noticias")
+                        header= valor.titulo
+                        article= valor.article.titulo
+                            header= valor.article.header
+                            div= valor.article.div
+                            aside= valor.article.aside
+                            p= valor.article.p
+                        article= valor.article2.titulo
+                            header= valor.article2.header
+                            div= valor.article2.div
+                            p= valor.article2.p
+                            footer= valor.article2.footer
+            +sesiones(data)
         footer footer
-             
-
