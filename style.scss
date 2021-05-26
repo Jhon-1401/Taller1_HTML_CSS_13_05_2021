@@ -2,6 +2,9 @@
 @import 'variables/color.scss';
 @import 'mixin/font-family.scss';
 @import 'mixin/border.scss';
+@import 'animaciones/submenus.scss';
+@import 'animaciones/banner.scss';
+
 *{
     margin: 0;
     padding: 0;
@@ -11,15 +14,35 @@ body{
     background: $relleno_body;
     overflow-x: hidden;
 }
+
+.loguito{
+    float: left;
+   //background-color: pink;
+   // color: red;
+    font-family: monospace;
+    width: 50px;    
+
+    -webkit-animation: 3s rotate linear infinite;
+    animation: 3s rotate linear infinite;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+
+@keyframes rotate {from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}}
+@-webkit-keyframes rotate {
+    from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}}
+
 header{
     @include negrita;
     @include diseño-padre;
     position: fixed;
-    top: 0;
+    top: -5em;
+    @include MostrarBanner(headerAnimacion);
     width: 97.7%;
     text-align: center;
     padding: .7em .9em;
-    /* background: red; */
     background: $relleno_header;
     @media only screen and (max-width: 500px)  {
         position: relative !important;
@@ -27,33 +50,37 @@ header{
         z-index: 10 !important;
         width: 100% !important;
     }
+    // nav:nth-last-of-type(1){
+    //     background: $relleno_nav_li;
+    //     opacity: .2;
+    // }
 }
 nav{
     @include normal;
     @include diseño-hija;
+    // height: 2.3em;
     text-align: center;
     /* background: red; */
     background: $relleno_nav;
-    color: $color_barra;
     ul{
         li{
             @include diseño-hija;
             display: inline-block;
+            // float: right;
             padding: 0.5em;
             margin: 0 0.7em;
             transition: all;
-            transition-duration: 0.5s;
+            transition-duration: .5s;
             @media only screen and (max-width: 500px)  {
                 margin: 0 -.2em;
-                
             }
         }
         li:hover, li:active, li:focus{
+            transition-timing-function: ease;
+            cursor: pointer;
             color: $colo_menu;
             background: $relleno_nav_li;
-            cursor: pointer;
             opacity: .8;
-            transition-timing-function: ease;
         }
     }
 }
@@ -64,6 +91,7 @@ aside{
     background: $relleno_aside;
 }
 section{
+    @include diseño-padre;
     @include negrita;
     text-align: center;
     display: inline-block;
@@ -72,59 +100,56 @@ section{
     padding: .7em .9em;
     /* background: red; */
     background: $relleno_section;
-    @media only screen and (max-width: 500px)  {
-        display: none !important;
-    }
-}
-
-section{
-    
+    position: fixed;
+    top: 4.2em;
+    width: 30%;
+    margin-right: .5%;
+    left: -35em;
+    @include Mostrar(Mostrar);
+    // left: 0;
 
     ul{
         li{
             // background: red !important;
-            @include diseño-hija;
             display: block;
             margin: .7em;
         }
     }
-}
-section{
-    aside{
-        /*Adaptar nuesto contemido*/
-      
-        /* background: red; */
-
-        img:nth-of-type(1){
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-            position:static;
-        }
-
-    }
-}
-section{
     header{
         @include normal;
         @include diseño-hija;
         position: static;
         /* background: red; */
     }
-}
-article header, 
-article div, 
-article aside,
-article p,
-article footer
-{
-    margin: 0;
-    padding: .7em 0;
-    display: inline-block;
-    vertical-align: top;
-    width: 95.8%;
-}
-section{
+    aside{
+        /*Adaptar nuesto contemido*/
+            // padding: 50px 0;
+            // padding: .7em;
+            position: relative;
+            width: 99.4%;
+            height: 250px;
+            overflow: hidden;
+            /* background: red; */
+            img{
+                position: absolute;
+                left: 0;
+                padding: .7em 0;
+                z-index: -1;
+                width: 100%;
+            }
+    }
+    div{
+        @include normal;
+        @include diseño-hija;
+        background: $relleno_div;
+
+    }
+    p{
+        @include normal;
+        @include diseño-hija;
+        width: 95.8%;
+        background: $relleno_p;
+    }
     article{
         @include negrita;
         @include diseño-padre;
@@ -136,51 +161,42 @@ section{
             padding-right: .7em;
         }
     }
-}
-section{
-    div{
-        @include normal;
-        @include diseño-hija;
-        background: $relleno_div;
-        @media only screen and (max-width: 500px)  {
-            width: 100%;
-        }
+    @media only screen and (max-width: 500px)  {
+        display: none !important;
     }
 }
-section{
-    p{
-        @include normal;
-        @include diseño-hija;
-        width: 95.8%;
-        background: $relleno_p;
-        @media only screen and (max-width: 500px)  {
-            width: 100%;
-        }
+article header, 
+article div, 
+article aside,
+article p,
+article footer{
+    margin: 0;
+    padding: .7em 0;
+    display: inline-block;
+    vertical-align: top;
+    width: 95.8%;
+    @media only screen and (max-width: 500px)  {
+        width: 100%;
     }
 }
+
 footer{
     @include negrita;
     @include diseño-padre;
     position: fixed;
     left: 0;
-    bottom: 0;
+    @include MostrarBanner(footerAnimacion);
+    bottom: -3em;
     width: 100%;
     text-align: center;
     background: $relleno_footer;
     padding: .7em 0;
     @media only screen and (max-width: 500px)  {
+        
         left: none !important;
-        bottom: none !important;
+        bottom: 0 !important;
         width: 100% !important;
     }
-}
-section{
-    @include diseño-padre;
-    position: fixed;
-    top: 4.3em;
-    left: 0;
-    width: 30%;
-    margin-right: .5%;
 }
 .Caja{
     position: absolute;
@@ -203,35 +219,43 @@ section{
     position: relative !important;
     display: inline-block;
     top: 4.2em;
-    right: 0;
+    @include Mostrar(MostrarLateral);
+    // left: 65em;
     width: 96%;
     margin-left: .5%;
-    @media only screen and (max-width: 500px)  {
-        display: inline-block !important;
-        width: 100% !important;
-    }
-}
-.noticias {
     aside{
         @include diseño-hija;
         display: inline-block;
         margin: 0;
         width: 35%;
+        height: 100%;
         @media only screen and (max-width: 500px)  {
             width: 100%;
         }
     }
-}
-.noticias{
     article:nth-of-type(1){
         div:nth-of-type(1){
             @include diseño-hija;
             display: inline-block;
-            width: 60.1%;
+            width: 60%;
             @media only screen and (max-width: 500px)  {
                 width: 100%;
             }
         }
+    }
+    footer{
+        @include normal;
+        @include diseño-hija;
+        position: sticky;
+        display: inline-block;
+        width: 95.8%;
+        background: $relleno_footer;
+    }
+    @media only screen and (max-width: 500px)  {
+        display: inline-block !important;
+        width: 100% !important;
+        left: 0;
+        @include Mostrar(none);
     }
 }
 .noticias > header{
@@ -241,14 +265,4 @@ section{
         padding: 0.7em 0em !important;
     }
     /* background: red; */
-}
-.noticias{
-    footer{
-        @include normal;
-        @include diseño-hija;
-        position: sticky;
-        display: inline-block;
-        width: 95.8%;
-        background: $relleno_footer;
-    }
 }

@@ -7,6 +7,21 @@
 // /*1.2em 20px*/
 // /*.9em 15px*/
 
+$relleno_body: rgb(253, 253, 253);
+
+$relleno_header: $relleno_body;
+$relleno_nav:#673ab705;
+$relleno_nav_li: #e58203;
+$relleno_section:rgba(253, 253, 253, 0.527);
+$relleno_aside: transparent;
+$relleno_article:rgb(0 137 255 / 9%);
+$relleno_div:transparent;
+$relleno_p:transparent;
+$relleno_footer:$relleno_body;
+    
+
+
+
 
 // $relleno_header: red;
 // $relleno_nav:blue;
@@ -18,16 +33,3 @@
 // $relleno_p:teal;
 // $relleno_footer:lavender;
 
-$relleno_header: transparent;
-$relleno_nav:transparent;
-$relleno_nav_li: rgb(218, 218, 218);
-$relleno_section:transparent;
-$relleno_aside:transparent;
-$relleno_article:transparent;
-$relleno_div:transparent;
-$relleno_p:transparent;
-$relleno_footer:transparent;
-    
-
-
-$relleno_body: rgb(253, 253, 253);
