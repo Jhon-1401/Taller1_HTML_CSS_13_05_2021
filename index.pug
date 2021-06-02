@@ -5,31 +5,32 @@ html(lang="sp")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet", href="style.css")
-        link(rel="shortcut icon", href="img/logo.png", type="image/png")
+        link(rel="shortcut icon", href="img/tortuga.png", type="image/png")
         link(rel="preconnect" href="https://fonts.gstatic.com")
         link(href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet")
-        title Taller 1 Maquetacion Web PUG
+        title Vida Marina
     body
-
-        -let data =[{article: {titulo: "Lo mas reciente",header: "1",div: "2",aside: "3",p: "4" },article2: {titulo: "Novedades",header: "awd",div: "4",p: "6",footer: "7" },titulo: "Ultimas noticias"},{article: {titulo: "Lo mas reciente",header: "1",div: "2",aside: "3",p: "4" },article2: {titulo: "Novedades",header: "awd",div: "4",p: "6",footer: "7" },titulo: "Ultimas noticias"}];
+        -let data=[{titulo:"Los Corales",article:{titulo:"",header:"Los arrecifes de coral tienen un valor incalculable en los ecosistemas marinos porque protegen las costas contra la erosión y los embates de las olas, sirven como hábitat para el 25% de especies marinas, incluyendo las de consumo humano y son de gran importancia para la pesca.",div:"Los corales son una clase de colonia de animales que se relacionan con los hidrozoos, las medusas y las anémonas de mar. Los corales pétreos, un tipo de coral caracterizado por su esqueleto duro, son el lecho del arrecife. Las colonias de corales pétreos están compuestas por cientos de miles de pólipos individuales.",aside:"https://www.youtube.com/embed/e5Z19udUf9A",p:{src:"https://media.cnnchile.com/sites/4/2020/06/Corales-1140x600-800x400.jpg",title:"Los corales marinos son animales coloniales, salvo excepciones,nota 1​ pertenecientes al filo Cnidaria, la mayoría a la clase Anthozoa aunque algunos son de la clase Hydrozoa (como Millepora). Los corales están formados por cientos o miles de individuos llamados zooides y pueden alcanzar grandes dimensiones. En aguas tropicales y subtropicales forman grandes arrecifes. El término «coral» no tiene significado taxonómico y bajo él se incluyen diferentes tipos de organismos. "}},article2:{titulo:"¿Por qué los corales son importantes?",header:"Los arrecifes de coral son uno de los ecosistemas más diversos y biológicamente complejos del mundo. Un cuarto de toda la vida marina depende de los arrecifes de coral para obtener alimentos y refugio",div:"Los arrecifes de coral sanos benefician a las comunidades de muchas maneras.",p:"Los arrecifes de coral sanos benefician a las comunidades de muchas maneras. Las personas de todo el mundo dependen de los ecosistemas de los arrecifes de coral, porque estos proveen alimentos, protección costera e ingresos del turismo y la pesca.",footer:{src:"https://espanol.epa.gov/espanol/la-importancia-de-los-arrecifes-de-coral",title:"https://espanol.epa.gov"}}}];
+        -let menu = {Principal: [{name:"Vida", des: "https://es.wikipedia.org/wiki/Vida_marina"},{name:"Los mas raros", des: "https://www.ranchomagico.com.mx/blog/los-animales-marinos-raros-del-mundo/"},{name:"Los mas grandes", des: "https://www.zoomadrid.com/blog/los-animales-acuaticos-mas-grandes-del-mundo-marino"},{name:"Evolución de la vida mariana", des: "http://www.foroconsultivo.org.mx/FCCyT/boletines-de-prensa/origen-y-evoluci%C3%B3n-de-la-biodiversidad-marina"}], Sub: [{name: "Así fue el ATERRIZAJE del 'Perseverance' en MARTE", des: "https://www.youtube.com/watch?v=EEjwm9yfHoM"},{name: "Perseverancebusca indicios en el planeta rojo", des: "https://www.youtube.com/watch?v=hEMSsTLhKxE"},{name: "Colombiana Diana Trujillo fue protagonista en el aterrizaje de la misión Perseverance en Marte", des: "https://www.youtube.com/watch?v=Rm_AKggUQts"},{name: "Viajar a Marte: helicóptero Ingenuity Mars logra volar en el planeta rojo - El Espectador", des: "https://www.youtube.com/watch?v=BmEuBOFodJA"}]};
         script.
             console.log(!{JSON.stringify(data)});
-        
         header
             img(src="img/tortuga.png", alt="",class="loguito")
-            nav 
-                ul 
-                    li Menu 1
-                    li Menu 2
-                    li Menu 3
-                    li Menu 4
+            mixin Menus({...arg})
+                nav 
+                    ul 
+                        each valor, i in arg
+                            li
+                                a(href=""+valor.des target="_blanck")=valor.name
+            +Menus(menu.Principal)
         section
-            nav 
-                ul 
-                    li sub Menu 1
-                    li sub Menu 2
-                    li sub Menu 3
-                    li sub Menu 4
+            mixin Menus2({...arg})
+                nav 
+                    ul 
+                        each valor, i in arg
+                            li
+                                a(href=""+valor.des target="_blanck")=valor.name
+            +Menus2(menu.Sub)
             aside
                 img(src="img/imagen1.jpg", alt="")
         div(class="Caja")
@@ -40,12 +41,29 @@ html(lang="sp")
                         article= valor.article.titulo
                             header= valor.article.header
                             div= valor.article.div
-                            aside= valor.article.aside
-                            p= valor.article.p
+                            aside 
+                                iframe(src=""+valor.article.aside frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
+                            p
+                                img(src=""+valor.article.p.src, title=""+valor.article.p.title)
                         article= valor.article2.titulo
                             header= valor.article2.header
                             div= valor.article2.div
                             p= valor.article2.p
-                            footer= valor.article2.footer
+                            footer
+                                a(href=""+valor.article2.footer.src, target="_blank")= valor.article2.footer.title
+                  
             +sesiones(data)
-        footer footer
+        div.burbujaWhatsapp
+            a(href="https://api.whatsapp.com/send?phone=+573058842347&text=Quieres saber mas sobre mi sitio web?", target="_blanck") 
+                img(src="img/whatsapp.png")
+        div.burbujas
+            img(src="img/svg/burbujas.svg")
+        footer
+            ul 
+                li Nombre: 
+                li Jhon David Guevara Toloza |
+                li Telefono: 
+                li #[a(href="tel:+57 3058842348") +57 3058842348] |
+                    
+                li Diplomado Comfenalco: 
+                li HTML CON PUG Y CSS CON SASS
